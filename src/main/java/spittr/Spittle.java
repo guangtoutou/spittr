@@ -7,7 +7,7 @@ public class Spittle {
 	private final String message;
 	private final Date time;
 	private Double latitude;
-	private Double longtitude;
+	private Double longitude;
 
 	public Spittle(String message, Date time) {
 		this(message, time, null, null);
@@ -17,7 +17,7 @@ public class Spittle {
 		this.id = null;
 		this.message = message;
 		this.time = time;
-		this.longtitude = longtitude;
+		this.longitude = longtitude;
 		this.latitude = latitude;
 	}
 
@@ -37,8 +37,8 @@ public class Spittle {
 		return latitude;
 	}
 
-	public Double getLongtitude() {
-		return longtitude;
+	public Double getLongitude() {
+		return longitude;
 	}
 	
 	@Override

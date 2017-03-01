@@ -11,7 +11,7 @@ import org.springframework.web.servlet.ViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("spittr.web")
+@ComponentScan(basePackages={"spittr.web","spittr.data"})
 public class WebConfig extends WebMvcConfigurerAdapter {
 
 	@Bean
