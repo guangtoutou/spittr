@@ -10,13 +10,15 @@ import spittr.data.SpitterRepository;
 
 import static org.springframework.web.bind.annotation.RequestMethod.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Controller
 @RequestMapping("/spitter")
 public class SpitterController {
 	private SpitterRepository spitterRepository;
 	
 	@RequestMapping(value = "/register", method = GET)
-	public String showRegistrationFor() {
+	public String showRegistrationForm() {
 		return "registerForm";
 	}
 
@@ -30,6 +32,12 @@ public class SpitterController {
 		Spitter spitter = spitterRepository.findByUsername(username);
 		model.addAttribute(spitter);
 		return "profile";
+	}
+	
+	@Autowired
+	public SpitterController(SpitterRepository spitterRepository){
+		this.spitterRepository = spitterRepository;
+		
 	}
 
 }
