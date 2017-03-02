@@ -6,6 +6,10 @@ public class Spitter {
 	private String username;
 	private String password;
 
+	public Spitter(){
+		
+	}
+	
 	public Spitter(String firstName, String lastName, String username, String password) {
 		this.firstName = firstName;
 		this.lastName = lastName;

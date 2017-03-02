@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<spitters>
+    <spitter>
+    	<firstname>James</firstname>
+        <lastname>Ni</lastname>
+        <username>guangtoutou</username>
+        <password>100</password>
+    </spitter>
+</spitters>

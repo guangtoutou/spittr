@@ -25,7 +25,7 @@ public class XMLSpitterRepository implements SpitterRepository {
 	private Document doc;
 
 	public Spitter findByUsername(String username) {
-		List<Element> elements = doc.selectNodes("spitters/spitter[username='dinkar']");
+		List<Element> elements = doc.selectNodes("spitters/spitter[username='" + username + "']");
 		Iterator<Element> i = elements.iterator();
 		while (i.hasNext()) {
 			Element e = i.next();
@@ -71,7 +71,8 @@ public class XMLSpitterRepository implements SpitterRepository {
 
 	public XMLSpitterRepository() throws DocumentException {
 		this.reader = new SAXReader();
-		this.doc = reader.read("/spitters.xml");
+		String path = System.getProperty("web.root");
+		this.doc = reader.read(path + "WEB-INF/spitters.xml");
 	}
 
 }

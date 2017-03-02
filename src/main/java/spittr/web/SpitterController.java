@@ -24,6 +24,7 @@ public class SpitterController {
 
 	@RequestMapping(value = "/register", method = POST)
 	public String processRegistration(Spitter spitter) {
+		spitterRepository.addSpitter(spitter);
 		return "redirect:/spitter/" + spitter.getUsername();
 	}
 	
