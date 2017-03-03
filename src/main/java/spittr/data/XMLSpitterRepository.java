@@ -24,6 +24,8 @@ public class XMLSpitterRepository implements SpitterRepository {
 
 	private Document doc;
 
+	private String path = System.getProperty("web.root") + "WEB-INF/" + "spitters.xml";
+
 	public Spitter findByUsername(String username) {
 		List<Element> elements = doc.selectNodes("spitters/spitter[username='" + username + "']");
 		Iterator<Element> i = elements.iterator();
@@ -49,7 +51,7 @@ public class XMLSpitterRepository implements SpitterRepository {
 
 		FileOutputStream fos;
 		try {
-			fos = new FileOutputStream("/spitters.xml");
+			fos = new FileOutputStream(path);
 			OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
 			OutputFormat of = new OutputFormat();
 			of.setEncoding("UTF-8");
@@ -66,13 +68,11 @@ public class XMLSpitterRepository implements SpitterRepository {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	public XMLSpitterRepository() throws DocumentException {
 		this.reader = new SAXReader();
-		String path = System.getProperty("web.root");
-		this.doc = reader.read(path + "WEB-INF/spitters.xml");
+		this.doc = reader.read(path);
 	}
 
 }
