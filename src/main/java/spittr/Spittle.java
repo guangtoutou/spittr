@@ -6,19 +6,18 @@ public class Spittle {
 	private final Long id;
 	private final String message;
 	private final Date time;
-	private Double latitude;
-	private Double longitude;
+	private Spitter spitter;
 
-	public Spittle(String message, Date time) {
-		this(message, time, null, null);
+	public Spitter getSpitter() {
+		return spitter;
 	}
 
-	public Spittle(String message, Date time, Double longtitude, Double latitude) {
-		this.id = null;
+	public Spittle(long id, String message, Date time, Spitter spitter) {
+		this.id = id;
 		this.message = message;
 		this.time = time;
-		this.longitude = longtitude;
-		this.latitude = latitude;
+		this.spitter = spitter;
+
 	}
 
 	public Long getId() {
@@ -33,17 +32,9 @@ public class Spittle {
 		return time;
 	}
 
-	public Double getLatitude() {
-		return latitude;
-	}
-
-	public Double getLongitude() {
-		return longitude;
-	}
-	
 	@Override
-	public boolean equals(Object that){
+	public boolean equals(Object that) {
 		return true;
-		//return EqualsBuilder.reflectionEquals(this, that,"id","time");
+		// return EqualsBuilder.reflectionEquals(this, that,"id","time");
 	}
 }

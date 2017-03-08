@@ -1,36 +1,68 @@
 package spittr;
 
 public class Spitter {
-	private String firstName;
-	private String lastName;
+	private long id;
+	private String fullName;
+	private String email;
 	private String username;
 	private String password;
+	private boolean updateByEmail;
+
+	public long getId() {
+		return id;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public boolean isUpdateByEmail() {
+		return updateByEmail;
+	}
+
+	public void setUpdateByEmail(boolean updateByEmail) {
+		this.updateByEmail = updateByEmail;
+	}
 
 	public Spitter(){
 		
 	}
 	
-	public Spitter(String firstName, String lastName, String username, String password) {
-		this.firstName = firstName;
-		this.lastName = lastName;
+	public Spitter(long id, String fullName, String email, String username, String password, boolean updateByEmail) {
+		this.id = id;
+		this.fullName = fullName;
+		this.email = email;
 		this.username = username;
 		this.password = password;
+		this.updateByEmail = updateByEmail;
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return fullName;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.fullName = firstName;
 	}
 
 	public String getLastName() {
-		return lastName;
+		return email;
 	}
 
 	public void setLastName(String lastName) {
-		this.lastName = lastName;
+		this.email = lastName;
 	}
 
 	public String getUsername() {

@@ -15,7 +15,7 @@ public class XMLSpitterRepositoryTest {
 
 	@Test
 	public void testAddSpitter() throws DocumentException {
-		Spitter spitter = new Spitter("James", "Ni", "guangtoutou", "123");
+		Spitter spitter = new Spitter(0, "James", "Ni", "guangtoutou", "123", false);
 		XMLSpitterRepository xmlSpitterRepository = new XMLSpitterRepository();
 		xmlSpitterRepository.addSpitter(spitter);
 	}

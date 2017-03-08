@@ -1,0 +1,18 @@
+@CHARSET "UTF-8";
+
+body{
+	background-color:#efefef;
+}
+li.spittle{
+	list-style: none;
+	background-color:white;
+	margin:10px 10px 0px 0px;
+}
+
+.spittle .spittleTime{
+	color: grey;
+	font-size: 12px;
+}
+.spittle .spittleMessage{
+	font-size: 18px;
+}

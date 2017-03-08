@@ -12,4 +12,8 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value="/login", method=POST)
+	public String login(){
+		return "redirect:/spittles";
+	}
 }

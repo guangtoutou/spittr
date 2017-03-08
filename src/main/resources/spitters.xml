@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<spitters>
+   
+    <spitter rollno="393">
+      
+        <firstname>dinkar</firstname>
+      
+        <lastname>kad</lastname>
+      
+        <username>dinkar</username>
+      
+        <password>85</password>
+   
+    </spitter>
+    <spitter>        <firstname>James</firstname>
+        <lastname>Ni</lastname>
+        <username>guangtoutou</username>
+        <password>123</password>
+    </spitter>
+</spitters>

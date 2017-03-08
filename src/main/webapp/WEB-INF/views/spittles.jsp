@@ -4,20 +4,17 @@
 <head>
 <title>Spittles</title>
 <link rel="stylesheet" type="text/css"
-	href="<c:url value="/resources/style.css" />">
+	href="<c:url value="/style/style.css" />">
 </head>
 <body>
 	<c:forEach items="${spittleList}" var="spittle">
-		<li id="spittle_<c:out value="spittle.id"/>">
+		<li id="spittle_<c:out value="spittle.id"/>" class="spittle">
 			<div class="spittleMessage">
 				<c:out value="${spittle.message}" />
 			</div>
 			<div>
 				<span class="spittleTime"><c:out value="${spittle.time}" /></span>
-				<span class="spittleLocation"> (<c:out
-						value="${spittle.latitude}" />, <c:out
-						value="${spittle.longitude}" />)
-				</span>
+				<span class="spitterName"><c:out value="${spittle.spitter.id}" /></span>
 			</div>
 		</li>
 	</c:forEach>

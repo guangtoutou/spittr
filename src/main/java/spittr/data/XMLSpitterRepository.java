@@ -35,7 +35,7 @@ public class XMLSpitterRepository implements SpitterRepository {
 			String lastName = e.elementText("lastname");
 			String password = e.elementText("password");
 
-			Spitter spitter = new Spitter(firstName, lastName, username, password);
+			Spitter spitter = new Spitter(0, firstName, lastName, username, password, false);
 			return spitter;
 		}
 
