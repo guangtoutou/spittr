@@ -44,8 +44,8 @@ public class XMLSpitterRepository implements SpitterRepository {
 
 	public void addSpitter(Spitter spitter) {
 		Element element = doc.getRootElement().addElement("spitter");
-		element.addElement("firstname").setText(spitter.getFirstName());
-		element.addElement("lastname").setText(spitter.getLastName());
+		element.addElement("firstname").setText(spitter.getFullName());
+		element.addElement("eamail").setText(spitter.getEmail());
 		element.addElement("username").setText(spitter.getUsername());
 		element.addElement("password").setText(spitter.getPassword());
 

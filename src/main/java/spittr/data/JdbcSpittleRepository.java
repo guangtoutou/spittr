@@ -1,6 +1,8 @@
 package spittr.data;
 
 import java.util.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcOperations;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
-
 
 import spittr.Spitter;
 import spittr.Spittle;
@@ -31,25 +33,28 @@ public class JdbcSpittleRepository implements SpittleRepository {
 
 	public List<Spittle> findSpittles(long max, int count) {
 
-		String sql = "Select * from spittle where id < ? limit 20";
-		List<Spittle> spittleList = new ArrayList<Spittle>();
-		List<Map<String, Object>> result = jdbcOperations.queryForList(sql, max);
-		for (Map iterator : result) {
-			System.out.println(iterator.get("message").toString());
-			Long id = Long.parseLong(iterator.get("id").toString());
-			String message = iterator.get("message").toString();
-			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-			Date time = new Date();
-			try {
-				time = format.parse(iterator.get("postedTime").toString());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			Spitter spitter = new Spitter(Long.parseLong(iterator.get("spitter").toString()), "", "", "", "", false);
-			Spittle spittle = new Spittle(id, message, time, spitter);
-			spittleList.add(spittle);
-		}
+		String sql = "SELECT spittle.*, spitter.id, spitter.fullname FROM spittle LEFT JOIN spitter ON spittle.spitter=spitter.id WHERE spittle.id < ? ORDER BY spittle.postedTime desc";
+		List<Spittle> spittleList = jdbcOperations.query(sql, new String[] { String.valueOf(max) },
+				new RowMapper<Spittle>() {
+					public Spittle mapRow(ResultSet rs, int rowNum) {
+						Spittle spittle = new Spittle();
+						Spitter spitter = new Spitter();
+						try {
+							spittle.setId(Long.parseLong(rs.getString("id")));
+							spittle.setMessage(rs.getString("message"));
+							spittle.setTime(rs.getTimestamp("postedTime"));
+							spitter.setFullName(rs.getString("fullName"));
+							spittle.setSpitter(spitter);
+
+						} catch (NumberFormatException e) {
+							e.printStackTrace();
+						} catch (SQLException e) {
+							e.printStackTrace();
+						}
+						return spittle;
+
+					}
+				});
 		return spittleList;
 
 	}
