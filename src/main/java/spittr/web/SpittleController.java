@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import spittr.Spittle;
@@ -29,7 +30,7 @@ public class SpittleController {
 	}
 */
 	@RequestMapping(value = "/spittles.json", method = RequestMethod.GET)
-	public @ResponseBody List<Spittle> listSpittles() {
+	public @ResponseBody List<Spittle> listSpittles(@RequestParam("name") String name) {
 		List<Spittle> spittles = spittleRepository.findSpittles(Long.MAX_VALUE, 20);
 		return spittles;
 	}

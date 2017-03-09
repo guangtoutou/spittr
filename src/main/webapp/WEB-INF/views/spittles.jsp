@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<!doctype html>
 <html>
 <head>
 <title>Spittles</title>
@@ -10,7 +11,10 @@
 <body>
 			<c:url value="/spittles.json" var="JsonUrl" />
 
-<h1>hello</h1>
+<h1>有什么新鲜事想告诉大家</h1>
+<input type="text"/>
+<input type="button" value="提交"/>
+<div id="loading">努力加载中...</div>
 <ul id="spittleList">
 </ul>	
 	<script type="text/javascript">
@@ -31,6 +35,7 @@
 	    	 var timeStamp = "<span class='spittleTime'>"+time.toLocaleDateString()+" "+time.toLocaleTimeString()+"</span>";
 			$("#spittleList" ).append("<li class='spittle'>"+spitter+message+timeStamp+"</li>");
 	     }
+	     $("#loading").hide();
 		})
 	}
 		</script>
