@@ -24,9 +24,12 @@
 	function fetchSpittles(){
 		$.getJSON('${JsonUrl}',function( json ) {
 	     for(i=0;i<json.length;i++){
-	    	 var messageHTML = "<div class='message'>"+json[i].message+"</div>";
-	    	 var messageTimestamp = "<span class='spittleTime'>"+json[i].time+"</span><span class='fullName''>"+json[i].spitter.fullName+"</span>";
-			$("#spittleList" ).append("<li class='spittle'>"+messageHTML+messageTimestamp+"</li>");
+	    	 var time = new Date();
+	    	 time.setTime(json[i].time);
+	    	 var spitter = "<span class='fullName'>"+json[i].spitter.fullName+"</span>"
+	    	 var message = "<div class='message'>"+json[i].message+"</div>";
+	    	 var timeStamp = "<span class='spittleTime'>"+time.toLocaleDateString()+" "+time.toLocaleTimeString()+"</span>";
+			$("#spittleList" ).append("<li class='spittle'>"+spitter+message+timeStamp+"</li>");
 	     }
 		})
 	}

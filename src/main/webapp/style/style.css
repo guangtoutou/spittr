@@ -9,7 +9,7 @@ li.spittle{
 	margin:10px 10px 0px 0px;
 }
 
-.spittle .spittleTime{
+.spittle .spittleTime, .spittle .fullName{
 	color: grey;
 	font-size: 12px;
 }
